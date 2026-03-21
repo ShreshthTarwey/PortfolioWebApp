@@ -110,10 +110,15 @@ export default function Achievements() {
                  className="relative p-[1px] rounded-3xl overflow-hidden group h-full"
                >
                  <div className={`absolute -inset-[200%] bg-[conic-gradient(from_0deg,transparent_0_70%,rgba(168,162,158,0.8)_100%)] animate-[spin_2s_linear_infinite] opacity-0 group-hover:opacity-100 transition-opacity duration-500`} />
-                 <div className="relative w-full h-full bg-[#0a0a0a] rounded-[calc(1.5rem-1px)] p-6 md:p-8 flex flex-col justify-center z-10 group-hover:bg-zinc-900 transition-all duration-500 overflow-hidden">
-                    <img src="/techsynergy.png" alt="Tech Synergy 1.0" className="absolute inset-0 w-full h-full object-cover opacity-20 group-hover:opacity-40 transition-all duration-500 group-hover:scale-105 z-0 mix-blend-luminosity hover:mix-blend-normal" />
-                    <div className="absolute inset-0 bg-gradient-to-t from-[#0a0a0a] via-[#0a0a0a]/80 to-transparent z-10 pointer-events-none" />
-                    <div className="relative z-20">
+                 <div className="relative w-full h-full bg-[#050505] rounded-[calc(1.5rem-1px)] p-6 md:p-8 flex flex-col justify-center z-10 transition-all duration-500 overflow-hidden">
+                    {/* Uncropped Floating Image */}
+                    <div className="absolute inset-y-0 right-0 w-[50%] md:w-[45%] p-4 md:p-6 opacity-40 mix-blend-luminosity group-hover:mix-blend-normal group-hover:opacity-100 transition-all duration-700 z-0 flex justify-end items-center pointer-events-none">
+                      <img src="/techsynergy.png" alt="Tech Synergy 1.0" className="w-full h-full object-contain object-right group-hover:scale-110 group-hover:rotate-2 transition-transform duration-700 drop-shadow-[0_0_20px_rgba(0,0,0,1)] rounded-lg" />
+                    </div>
+                    {/* Seamless Fade Gradient */}
+                    <div className="absolute inset-0 bg-gradient-to-r from-[#050505] via-[#050505]/90 to-transparent z-10 pointer-events-none w-[70%]" />
+                    
+                    <div className="relative z-20 w-[100%] md:w-[70%]">
                       <div className="absolute -right-10 -top-10 w-32 h-32 bg-zinc-400/10 blur-[50px] opacity-10 group-hover:opacity-100 transition-opacity duration-700"></div>
                       <h4 className="text-2xl font-black text-white mb-1 tracking-tight group-hover:translate-x-2 transition-transform duration-500">Tech Synergy 1.0</h4>
                       <p className="text-zinc-300 font-medium text-sm md:text-base group-hover:translate-x-2 transition-transform duration-500 delay-75">Coding Competition</p>
@@ -135,10 +140,15 @@ export default function Achievements() {
                  className="relative p-[1px] rounded-3xl overflow-hidden group h-full"
                >
                  <div className={`absolute -inset-[200%] bg-[conic-gradient(from_0deg,transparent_0_70%,rgba(147,51,234,0.8)_100%)] animate-[spin_2.5s_linear_infinite] opacity-0 group-hover:opacity-100 transition-opacity duration-500`} />
-                 <div className="relative w-full h-full bg-[#0a0a0a] rounded-[calc(1.5rem-1px)] p-6 md:p-8 flex flex-col justify-center z-10 group-hover:bg-purple-950/40 transition-all duration-500 overflow-hidden">
-                    <img src="/zinnovatio.jpg" alt="Zinnovatio 3.0" className="absolute inset-0 w-full h-full object-cover opacity-20 group-hover:opacity-40 transition-all duration-700 group-hover:scale-105 z-0 mix-blend-luminosity hover:mix-blend-normal" />
-                    <div className="absolute inset-0 bg-gradient-to-t from-[#0a0a0a] via-[#0a0a0a]/80 to-transparent z-10 pointer-events-none" />
-                    <div className="relative z-20">
+                 <div className="relative w-full h-full bg-[#050505] rounded-[calc(1.5rem-1px)] p-6 md:p-8 flex flex-col justify-center z-10 group-hover:bg-purple-950/20 transition-all duration-500 overflow-hidden">
+                    {/* Uncropped Floating Image */}
+                    <div className="absolute inset-y-0 right-0 w-[50%] md:w-[45%] p-4 md:p-6 opacity-40 mix-blend-luminosity group-hover:mix-blend-normal group-hover:opacity-100 transition-all duration-700 z-0 flex justify-end items-center pointer-events-none">
+                      <img src="/zinnovatio.jpg" alt="Zinnovatio 3.0" className="w-full h-full object-contain object-right group-hover:scale-110 group-hover:-rotate-2 transition-transform duration-700 drop-shadow-[0_0_20px_rgba(0,0,0,1)] rounded-lg" />
+                    </div>
+                    {/* Seamless Fade Gradient */}
+                    <div className="absolute inset-0 bg-gradient-to-r from-[#050505] via-[#050505]/90 to-transparent z-10 pointer-events-none w-[70%]" />
+                    
+                    <div className="relative z-20 w-[100%] md:w-[70%]">
                       <div className="absolute -right-10 -top-10 w-32 h-32 bg-purple-500/10 blur-[50px] opacity-10 group-hover:opacity-100 transition-opacity duration-700"></div>
                       <h4 className="text-2xl font-black text-white mb-1 tracking-tight group-hover:translate-x-2 transition-transform duration-500">Zinnovatio 3.0</h4>
                       <p className="text-zinc-300 font-medium text-sm md:text-base group-hover:translate-x-2 transition-transform duration-500 delay-75">Chandigarh University Hackathon</p>
@@ -160,10 +170,15 @@ export default function Achievements() {
                  className="relative p-[1px] rounded-3xl overflow-hidden group h-full"
                >
                  <div className={`absolute -inset-[200%] bg-[conic-gradient(from_0deg,transparent_0_70%,rgba(16,185,129,0.8)_100%)] animate-[spin_3s_linear_infinite] opacity-0 group-hover:opacity-100 transition-opacity duration-500`} />
-                 <div className="relative w-full h-full bg-[#0a0a0a] rounded-[calc(1.5rem-1px)] p-6 md:p-8 flex flex-col justify-center z-10 group-hover:bg-emerald-950/40 transition-all duration-500 overflow-hidden">
-                    <img src="/hackatron.jpg" alt="Hackatron IITM Gwalior" className="absolute inset-0 w-full h-full object-cover opacity-20 group-hover:opacity-40 transition-all duration-700 group-hover:scale-105 z-0 mix-blend-luminosity hover:mix-blend-normal" />
-                    <div className="absolute inset-0 bg-gradient-to-t from-[#0a0a0a] via-[#0a0a0a]/80 to-transparent z-10 pointer-events-none" />
-                    <div className="relative z-20">
+                 <div className="relative w-full h-full bg-[#050505] rounded-[calc(1.5rem-1px)] p-6 md:p-8 flex flex-col justify-center z-10 group-hover:bg-emerald-950/20 transition-all duration-500 overflow-hidden">
+                    {/* Uncropped Floating Image */}
+                    <div className="absolute inset-y-0 right-0 w-[50%] md:w-[45%] p-4 md:p-6 opacity-40 mix-blend-luminosity group-hover:mix-blend-normal group-hover:opacity-100 transition-all duration-700 z-0 flex justify-end items-center pointer-events-none">
+                      <img src="/hackatron.jpg" alt="Hackatron IITM Gwalior" className="w-full h-full object-contain object-right group-hover:scale-110 group-hover:rotate-1 transition-transform duration-700 drop-shadow-[0_0_20px_rgba(0,0,0,1)] rounded-lg" />
+                    </div>
+                    {/* Seamless Fade Gradient */}
+                    <div className="absolute inset-0 bg-gradient-to-r from-[#050505] via-[#050505]/90 to-transparent z-10 pointer-events-none w-[70%]" />
+                    
+                    <div className="relative z-20 w-[100%] md:w-[70%]">
                       <div className="absolute -right-10 -top-10 w-32 h-32 bg-emerald-500/10 blur-[50px] opacity-10 group-hover:opacity-100 transition-opacity duration-700"></div>
                       <h4 className="text-2xl font-black text-white mb-1 tracking-tight group-hover:translate-x-2 transition-transform duration-500">Hackatron</h4>
                       <p className="text-zinc-300 font-medium text-sm md:text-base group-hover:translate-x-2 transition-transform duration-500 delay-75">IITM Gwalior</p>
