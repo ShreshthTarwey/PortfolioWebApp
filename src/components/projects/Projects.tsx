@@ -98,58 +98,61 @@ export default function Projects() {
 
   return (
     <section ref={targetRef} id="projects" className="relative h-[300vh] bg-[#050505]">
-      
-      <div className="sticky top-0 h-screen w-full flex items-center overflow-hidden">
+      {/* Sticky container that holds the horizontal scrolling row */}
+      <div className="sticky top-0 h-[100dvh] overflow-hidden flex items-center">
         
-        <motion.div style={{ x }} className="flex h-full w-[300vw]">
-          {PROJECTS.map((project) => {
+        <motion.div style={{ x }} className="flex w-[300vw] h-full">
+          {PROJECTS.map((project, index) => {
             return (
-              <div key={project.num} className="h-full w-screen flex flex-col items-center justify-center relative p-6 md:p-20 overflow-hidden">
-                
-                {/* Massive Hollow Background Number */}
-                <div className="absolute inset-0 flex items-center justify-center pointer-events-none select-none z-0">
-                   <h2 
-                     className="text-[20rem] md:text-[30rem] lg:text-[40rem] font-black text-transparent opacity-20 mix-blend-overlay tracking-tighter"
-                     style={{ WebkitTextStroke: "2px rgba(255,255,255,0.2)" }}
-                   >
-                     {project.num}
-                   </h2>
-                </div>
+              <div key={index} className="w-screen h-[100dvh] flex flex-col lg:flex-row items-center justify-center px-6 md:px-12 lg:px-24 relative pt-20 pb-32 lg:py-24">
+              
+              {/* Massive Background Number */}
+              <div className="absolute inset-0 flex items-center justify-center pointer-events-none z-0 opacity-20">
+                <span className="text-[20rem] md:text-[30rem] lg:text-[40rem] font-black text-transparent" style={{ WebkitTextStroke: "2px rgba(255,255,255,0.1)" }}>
+                   {project.num}
+                </span>
+              </div>
 
-                {/* Abstract Colored Halo specific to project */}
-                <motion.div 
-                  animate={{ 
-                    rotate: [0, 360],
-                    scale: [1, 1.1, 1],
-                  }}
-                  transition={{ duration: 20, repeat: Infinity, ease: "linear" }}
-                  className={`absolute top-1/4 right-10 md:right-1/4 w-[300px] h-[300px] md:w-[600px] md:h-[600px] bg-gradient-to-tr ${project.color} rounded-full blur-[120px] md:blur-[180px] opacity-30 pointer-events-none -z-10`}
-                />
+              {/* Abstract Colored Halo specific to project */}
+              <motion.div 
+                animate={{ 
+                  rotate: [0, 360],
+                  scale: [1, 1.1, 1],
+                }}
+                transition={{ duration: 20, repeat: Infinity, ease: "linear" }}
+                className={`absolute top-1/4 right-10 md:right-1/4 w-[300px] h-[300px] md:w-[600px] md:h-[600px] bg-gradient-to-tr ${project.color} rounded-full blur-[120px] md:blur-[180px] opacity-30 pointer-events-none -z-10`}
+              />
 
-                <div className="relative z-10 max-w-7xl w-full flex flex-col lg:flex-row items-center gap-12 lg:gap-24">
+              {/* Foreground Content */}
+              <div className="max-w-7xl w-full mx-auto flex flex-col lg:flex-row items-center justify-between z-10 gap-8 lg:gap-0 h-full lg:h-auto">
                   
-                  <div className="flex-1 flex flex-col items-start text-left">
-                    <div className={`inline-flex items-center gap-2 px-5 py-2 rounded-full border border-white/10 ${project.bgAccent} mb-6 md:mb-8 backdrop-blur-md`}>
-                      <Sparkles className={`w-4 h-4 ${project.textAccent}`} />
-                      <span className={`text-xs md:text-sm font-bold uppercase tracking-widest ${project.textAccent}`}>{project.type}</span>
-                    </div>
+                  {/* Left Column (Details) - Featuring internal overflow guard for exceptionally short screens */}
+                  <div className="w-full lg:w-1/2 flex flex-col pr-0 lg:pr-12 relative z-20 max-h-full overflow-y-auto pb-12 lg:pb-0 [&::-webkit-scrollbar]:hidden [-ms-overflow-style:none] [scrollbar-width:none]">
+                     <div className="text-5xl md:text-8xl lg:text-[10rem] font-black text-white/5 absolute -top-6 lg:-top-20 -left-2 lg:-left-10 select-none">
+                        {project.num}
+                     </div>
+                     
+                     <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full border border-white/10 bg-white/5 backdrop-blur-md mb-4 lg:mb-6 w-max">
+                        <Sparkles className={`w-3 h-3 md:w-4 md:h-4 ${project.textAccent}`} />
+                        <span className={`text-[10px] md:text-xs font-bold tracking-widest uppercase ${project.textAccent}`}>{project.type}</span>
+                     </div>
 
-                    <h3 className="text-5xl md:text-7xl lg:text-8xl font-black mb-6 md:mb-8 text-white tracking-tighter">
-                      {project.title}
-                    </h3>
-                    
-                    <ul className="flex flex-col gap-4 mb-10 max-w-2xl">
+                     <h3 className="text-3xl md:text-6xl lg:text-7xl font-black text-white mb-4 lg:mb-6 tracking-tighter shrink-0">
+                        {project.title}
+                     </h3>
+                     
+                     <ul className="flex flex-col gap-2 md:gap-4 mb-6 md:mb-10 max-w-2xl">
                       {project.desc.map((point, i) => (
-                        <li key={i} className="flex items-start gap-4">
-                          <CheckCircle2 className={`w-5 h-5 md:w-6 md:h-6 flex-shrink-0 mt-1 ${project.textAccent}`} />
-                          <span className="text-zinc-400 text-base md:text-lg lg:text-xl font-medium leading-relaxed">
+                        <li key={i} className="flex items-start gap-3 md:gap-4">
+                          <CheckCircle2 className={`w-4 h-4 md:w-6 md:h-6 flex-shrink-0 mt-1 ${project.textAccent}`} />
+                          <span className="text-zinc-400 text-sm md:text-lg lg:text-xl font-medium leading-relaxed">
                             {point}
                           </span>
                         </li>
                       ))}
                     </ul>
 
-                    <div className="flex flex-wrap gap-3 mb-12 max-w-2xl">
+                     <div className="flex flex-wrap gap-2 lg:gap-3 mb-6 md:mb-12 max-w-2xl shrink-0">
                       {project.tech.map((t, i) => (
                         <span key={i} className="px-5 py-2 text-xs md:text-sm font-bold text-zinc-300 rounded-full border border-white/10 bg-white/5 backdrop-blur-md shadow-sm">
                           {t}
@@ -173,7 +176,7 @@ export default function Projects() {
                   </div>
 
                   {/* Glassmorphic Project Visual Abstraction */}
-                  <div className="flex-1 w-full lg:w-auto h-[350px] md:h-[500px] lg:h-[600px] relative mt-12 lg:mt-0 perspective-1000 hidden sm:block">
+                  <div className="flex-1 w-full lg:w-auto h-[250px] md:h-[400px] lg:h-[550px] relative mt-8 lg:mt-0 perspective-1000 hidden md:block shrink-0">
                      <motion.div 
                        initial={{ rotateY: -15, rotateX: 10 }}
                        whileHover={{ rotateY: 0, rotateX: 0 }}
