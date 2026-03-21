@@ -2,6 +2,7 @@ import Hero from "@/components/home/Hero";
 import About from "@/components/about/About";
 import Skills from "@/components/skills/Skills";
 import Projects from "@/components/projects/Projects";
+import Achievements from "@/components/achievements/Achievements";
 import PageWrapper from "@/components/layout/PageWrapper";
 
 export default function Home() {
@@ -12,6 +13,7 @@ export default function Home() {
         <About />
         <Skills />
         <Projects />
+        <Achievements />
       </div>
     </PageWrapper>
   );
