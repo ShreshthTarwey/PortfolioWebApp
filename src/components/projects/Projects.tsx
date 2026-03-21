@@ -1,7 +1,7 @@
 "use client";
 import { motion, useScroll, useTransform } from "framer-motion";
 import { useRef } from "react";
-import { ExternalLink, Github, Sparkles } from "lucide-react";
+import { ExternalLink, Github, Sparkles, ChevronDown, CheckCircle2 } from "lucide-react";
 import Link from "next/link";
 
 const PROJECTS = [
@@ -10,7 +10,11 @@ const PROJECTS = [
     image: "/teerbrand.png",
     title: "Teer Brand",
     type: "Premium E-Commerce Platform",
-    desc: "A highly scalable MERN stack e-commerce application designed for a local spices company. Features secure JWT authentication, Razorpay integration, a dynamic admin dashboard, and fluid Framer Motion animations to deliver a premium shopping experience.",
+    desc: [
+      "Engineered a scalable, full-stack MERN platform for an artisanal spices company.",
+      "Implemented secure JWT authentication, a hybrid shopping cart, and seamless Razorpay payment integration.",
+      "Developed a robust admin dashboard using Recharts for real-time sales analytics and complete inventory tracking."
+    ],
     tech: ["React.js", "Node.js", "MongoDB", "Razorpay", "Framer Motion"],
     demo: "https://teerbrand.vercel.app/",
     github: "https://github.com/ShreshthTarwey/teer-brand-ecommerce",
@@ -23,7 +27,11 @@ const PROJECTS = [
     image: "/sarathi.png",
     title: "SARATHI",
     type: "AI-Powered Assistive Education",
-    desc: "1st Rank Winner at Paranox 2.0 National Hackathon. Designed to bridge the gap in special needs education, this platform integrates real-time ML speech-to-text models and gamified React components tailored for children with Autism and Down Syndrome, boosting engagement by 50%.",
+    desc: [
+      "Developed an award-winning assistive education web platform for differently-abled children (1st Rank, Paranox 2.0).",
+      "Architected the Next.js frontend and engineered customized Python/FastAPI ML speech-to-text accessibility models.",
+      "Designed specialized gamified UI components, tangibly increasing engagement for children with Autism and Down Syndrome by 50%."
+    ],
     tech: ["Next.js", "Python / FastAPI", "Machine Learning", "Tailwind", "Socket.io"],
     demo: "https://sarathi-assist.vercel.app/",
     github: "https://github.com/ShreshthTarwey/SARATHI-S4-100",
@@ -36,7 +44,11 @@ const PROJECTS = [
     image: "/ecotrust.png",
     title: "EcoTrust",
     type: "NLP Fake News Detection",
-    desc: "An AI-driven fake news detection engine achieving 90% accuracy. Extracts critical keywords via KeyBERT/spaCy and operates a robust dual-API search system (Google Search + SerpAPI fallback) to score article credibility seamlessly in real-time.",
+    desc: [
+      "Built an advanced fake news verification engine leveraging NLP and AI to independently achieve 90% detection accuracy.",
+      "Utilized KeyBERT and spaCy to dynamically extract critical keywords efficiently from requested article text.",
+      "Cross-referenced data using a robust, fault-tolerant dual-API search architecture (SerpAPI + Google Search fallback)."
+    ],
     tech: ["Python", "Flask", "Sentence-BERT", "spaCy", "Gemini API"],
     demo: "", // Empty so it intelligently hides the button
     github: "https://github.com/ShreshthTarwey/EcoTrust",
@@ -52,9 +64,37 @@ export default function Projects() {
   // Creates a highly robust mapping from vertical scroll to horizontal scroll.
   const { scrollYProgress } = useScroll({
     target: targetRef,
+    offset: ["start start", "end end"]
   });
 
   const x = useTransform(scrollYProgress, [0, 1], ["0vw", "-200vw"]);
+  const progressPercentage = useTransform(scrollYProgress, v => v * 100);
+
+  const handleScrub = (e: React.ChangeEvent<HTMLInputElement>) => {
+    if (targetRef.current) {
+      const percentage = Number(e.target.value) / 100;
+      const rect = targetRef.current.getBoundingClientRect();
+      const absoluteTop = window.scrollY + rect.top;
+      const scrollDistance = targetRef.current.offsetHeight - window.innerHeight;
+      
+      window.scrollTo({
+        top: absoluteTop + (percentage * scrollDistance),
+        behavior: "auto" // Immediate follow for native mouse scrubbing feel
+      });
+    }
+  };
+
+  const handleSkip = () => {
+    if (targetRef.current) {
+      const rect = targetRef.current.getBoundingClientRect();
+      const absoluteTop = window.scrollY + rect.top;
+      const end = absoluteTop + targetRef.current.offsetHeight;
+      window.scrollTo({
+        top: end,
+        behavior: "smooth" // Elegant glide out of the section
+      });
+    }
+  };
 
   return (
     <section ref={targetRef} id="projects" className="relative h-[300vh] bg-[#050505]">
@@ -98,9 +138,16 @@ export default function Projects() {
                       {project.title}
                     </h3>
                     
-                    <p className="text-zinc-400 text-base md:text-xl font-medium leading-relaxed mb-10 max-w-2xl">
-                      {project.desc}
-                    </p>
+                    <ul className="flex flex-col gap-4 mb-10 max-w-2xl">
+                      {project.desc.map((point, i) => (
+                        <li key={i} className="flex items-start gap-4">
+                          <CheckCircle2 className={`w-5 h-5 md:w-6 md:h-6 flex-shrink-0 mt-1 ${project.textAccent}`} />
+                          <span className="text-zinc-400 text-base md:text-lg lg:text-xl font-medium leading-relaxed">
+                            {point}
+                          </span>
+                        </li>
+                      ))}
+                    </ul>
 
                     <div className="flex flex-wrap gap-3 mb-12 max-w-2xl">
                       {project.tech.map((t, i) => (
@@ -157,15 +204,34 @@ export default function Projects() {
         </motion.div>
 
         {/* Universal Progress Navigation Bar */}
-        <div className="absolute bottom-6 md:bottom-12 left-1/2 -translate-x-1/2 flex flex-col md:flex-row items-center gap-3 md:gap-5 z-50 bg-black/60 px-6 md:px-8 py-3 md:py-4 rounded-full backdrop-blur-xl border border-white/10 shadow-2xl">
-          <div className="text-zinc-400 font-bold text-xs md:text-sm tracking-widest uppercase">Scroll Down</div>
-          <div className="w-32 md:w-64 h-2 bg-white/10 rounded-full overflow-hidden">
+        <div className="absolute bottom-6 md:bottom-12 left-1/2 -translate-x-1/2 flex flex-col md:flex-row items-center gap-3 md:gap-5 z-50 bg-black/60 px-6 md:px-8 py-3 md:py-4 rounded-full backdrop-blur-xl border border-white/10 shadow-2xl transition-all hover:bg-black/80 hover:border-white/20 hover:scale-105">
+          <div className="text-zinc-400 font-bold text-xs md:text-sm tracking-widest uppercase">Scroll or Drag</div>
+          <div className="relative w-32 md:w-64 h-3 bg-white/10 rounded-full overflow-hidden flex items-center">
              <motion.div 
-               className="h-full bg-gradient-to-r from-orange-400 via-purple-400 to-emerald-400"
+               className="absolute left-0 top-0 bottom-0 bg-gradient-to-r from-orange-400 via-purple-400 to-emerald-400 w-full"
                style={{ scaleX: scrollYProgress, transformOrigin: "left" }}
+             />
+             <motion.input 
+               type="range"
+               min="0"
+               max="100"
+               step="0.01"
+               onChange={handleScrub}
+               value={progressPercentage as any}
+               className="absolute inset-0 w-full h-full opacity-0 cursor-ew-resize z-10"
+               aria-label="Scrub through projects"
              />
           </div>
         </div>
+
+        {/* Skip Section Floating Button */}
+        <button 
+          onClick={handleSkip}
+          className="absolute bottom-8 md:bottom-12 right-6 md:right-12 z-50 w-12 h-12 md:w-16 md:h-16 rounded-full bg-white/5 border border-white/10 backdrop-blur-md flex items-center justify-center text-zinc-400 hover:text-white hover:bg-white/10 transition-all group shadow-xl hover:shadow-[0_0_30px_rgba(255,255,255,0.1)]"
+          aria-label="Skip to next section"
+        >
+          <ChevronDown className="w-6 h-6 md:w-8 md:h-8 group-hover:translate-y-1 transition-transform" />
+        </button>
 
       </div>
     </section>
