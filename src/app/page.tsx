@@ -5,6 +5,9 @@ import Skills from "@/components/skills/Skills";
 import Projects from "@/components/projects/Projects";
 import Achievements from "@/components/achievements/Achievements";
 import Certifications from "@/components/certifications/Certifications";
+import CodePulse from "@/components/codepulse/CodePulse";
+import Contact from "@/components/contact/Contact";
+import Footer from "@/components/footer/Footer";
 import PageWrapper from "@/components/layout/PageWrapper";
 
 export default function Home() {
@@ -18,7 +21,10 @@ export default function Home() {
         <Projects />
         <Achievements />
         <Certifications />
+        <CodePulse />
+        <Contact />
       </div>
+      <Footer />
     </PageWrapper>
   );
 }
