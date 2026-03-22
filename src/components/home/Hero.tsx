@@ -5,7 +5,7 @@ import { ArrowRight, Download, Sparkles } from "lucide-react";
 import Link from "next/link";
 import Image from "next/image";
 
-const ROLES = ["Full Stack Developer", "C++ Enthusiast", "AI Implementer", "Problem Solver"];
+const ROLES = ["Full Stack Developer", "GenAI Enthusiast", "Hackathon Winner", "Problem Solver"];
 
 export default function Hero() {
   const [roleIndex, setRoleIndex] = useState(0);
