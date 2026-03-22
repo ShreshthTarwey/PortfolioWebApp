@@ -16,7 +16,7 @@ export default function Home() {
       <Hero />
       <div className="relative">
         <About />
-        {/* <Education /> */}
+        <Education />
         <Skills />
         <Projects />
         <Achievements />
