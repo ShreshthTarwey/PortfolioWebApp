@@ -1,11 +1,12 @@
 "use client";
 import { motion } from "framer-motion";
 import Link from "next/link";
-import { Github, Linkedin, Mail } from "lucide-react";
+import { Github, Linkedin, Mail, Check } from "lucide-react";
 import { useState, useEffect } from "react";
 
 export default function Navbar() {
   const [scrolled, setScrolled] = useState(false);
+  const [isCopied, setIsCopied] = useState(false);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -15,11 +16,24 @@ export default function Navbar() {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
+  const handleCopyEmail = (e: React.MouseEvent) => {
+    e.preventDefault();
+    // 1. Copy to clipboard for everyone (Fallback if no mail client exists)
+    navigator.clipboard.writeText("shreshthtarwey3010@gmail.com");
+    setIsCopied(true);
+    setTimeout(() => setIsCopied(false), 2000);
+
+    // 2. Attempt to open native mail client
+    window.location.href = "mailto:shreshthtarwey3010@gmail.com";
+  };
+
   const links = [
     { name: "Home", href: "/" },
     { name: "About", href: "#about" },
     { name: "Skills", href: "#skills" },
     { name: "Projects", href: "#projects" },
+    { name: "Achievements", href: "#achievements" },
+    { name: "Certifications", href: "#certifications" },
   ];
 
   return (
@@ -58,9 +72,24 @@ export default function Navbar() {
           <Link href="https://www.linkedin.com/in/shreshth-tarwey" target="_blank" className="w-10 h-10 flex items-center justify-center rounded-full bg-white/5 border border-white/10 text-zinc-400 hover:text-blue-400 hover:bg-blue-500/10 hover:border-blue-500/50 hover:shadow-[0_0_15px_rgba(59,130,246,0.4)] transition-all">
             <Linkedin className="w-5 h-5" />
           </Link>
-          <Link href="mailto:shreshthtarwey3010@gmail.com" className="w-10 h-10 flex items-center justify-center rounded-full bg-white/5 border border-white/10 text-zinc-400 hover:text-rose-400 hover:bg-rose-500/10 hover:border-rose-500/50 hover:shadow-[0_0_15px_rgba(225,29,72,0.4)] transition-all">
-            <Mail className="w-5 h-5" />
-          </Link>
+          <div className="relative flex flex-col items-center">
+            <button 
+              onClick={handleCopyEmail} 
+              className="w-10 h-10 flex items-center justify-center rounded-full bg-white/5 border border-white/10 text-zinc-400 hover:text-rose-400 hover:bg-rose-500/10 hover:border-rose-500/50 hover:shadow-[0_0_15px_rgba(225,29,72,0.4)] transition-all relative z-10"
+              aria-label="Copy Email to Clipboard"
+            >
+              {isCopied ? <Check className="w-5 h-5 text-emerald-400" /> : <Mail className="w-5 h-5" />}
+            </button>
+            
+            {/* Animated Tooltip */}
+            <motion.div 
+              initial={{ opacity: 0, y: -5, scale: 0.8 }}
+              animate={{ opacity: isCopied ? 1 : 0, y: isCopied ? 45 : -5, scale: isCopied ? 1 : 0.8 }}
+              className="absolute top-0 px-3 py-1.5 bg-zinc-900 border border-white/10 text-emerald-400 text-xs font-bold tracking-widest uppercase rounded-lg shadow-xl pointer-events-none whitespace-nowrap"
+            >
+              Email Copied!
+            </motion.div>
+          </div>
         </div>
       </div>
     </header>

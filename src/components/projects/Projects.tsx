@@ -137,41 +137,42 @@ export default function Projects() {
                         <span className={`text-[10px] md:text-xs font-bold tracking-widest uppercase ${project.textAccent}`}>{project.type}</span>
                      </div>
 
-                     <h3 className="text-3xl md:text-6xl lg:text-7xl font-black text-white mb-4 lg:mb-6 tracking-tighter shrink-0">
+                     <h3 className="text-3xl md:text-6xl lg:text-7xl font-black text-white mb-6 tracking-tighter shrink-0">
                         {project.title}
                      </h3>
                      
-                     <ul className="flex flex-col gap-2 md:gap-4 mb-6 md:mb-10 max-w-2xl">
+                     {/* High-visibility Action Buttons placed immediately under the title */}
+                     <div className="flex flex-wrap items-center gap-3 md:gap-4 w-full mb-8 lg:mb-10">
+                       {project.demo && (
+                         <Link href={project.demo} target="_blank" className={`h-12 md:h-14 px-6 md:px-8 rounded-full bg-gradient-to-r ${project.color} text-white font-bold flex items-center justify-center gap-2 hover:scale-105 transition-all shadow-[0_0_30px_rgba(255,255,255,0.1)] text-sm md:text-base`}>
+                           View Live <ExternalLink className="w-4 h-4 md:w-5 md:h-5" />
+                         </Link>
+                       )}
+                       
+                       {project.github && (
+                         <Link href={project.github} target="_blank" className="h-12 md:h-14 px-6 md:px-8 rounded-full border border-white/10 bg-white/5 backdrop-blur-md text-white font-bold flex items-center justify-center gap-2 hover:bg-white/10 transition-all text-sm md:text-base">
+                           GitHub <Github className="w-4 h-4 md:w-5 md:h-5" />
+                         </Link>
+                       )}
+                     </div>
+
+                     <ul className="flex flex-col gap-3 md:gap-4 mb-8 max-w-2xl">
                       {project.desc.map((point, i) => (
                         <li key={i} className="flex items-start gap-3 md:gap-4">
-                          <CheckCircle2 className={`w-4 h-4 md:w-6 md:h-6 flex-shrink-0 mt-1 ${project.textAccent}`} />
-                          <span className="text-zinc-400 text-sm md:text-lg lg:text-xl font-medium leading-relaxed">
+                          <CheckCircle2 className={`w-4 h-4 md:w-5 md:h-5 flex-shrink-0 mt-1 flex-none ${project.textAccent}`} />
+                          <span className="text-zinc-400 text-sm md:text-base lg:text-lg font-medium leading-relaxed">
                             {point}
                           </span>
                         </li>
                       ))}
                     </ul>
 
-                     <div className="flex flex-wrap gap-2 lg:gap-3 mb-6 md:mb-12 max-w-2xl shrink-0">
+                     <div className="flex flex-wrap gap-2 lg:gap-3 max-w-2xl shrink-0 mt-auto">
                       {project.tech.map((t, i) => (
-                        <span key={i} className="px-5 py-2 text-xs md:text-sm font-bold text-zinc-300 rounded-full border border-white/10 bg-white/5 backdrop-blur-md shadow-sm">
+                        <span key={i} className="px-4 py-2 text-[10px] md:text-xs font-bold text-zinc-300 rounded-full border border-white/5 bg-white/5 backdrop-blur-md shadow-sm">
                           {t}
                         </span>
                       ))}
-                    </div>
-
-                    <div className="flex flex-col sm:flex-row items-center gap-4 w-full sm:w-auto">
-                      {project.demo && (
-                        <Link href={project.demo} target="_blank" className={`h-14 w-full sm:w-auto px-8 rounded-full bg-gradient-to-r ${project.color} text-white font-bold flex items-center justify-center gap-2 hover:scale-105 transition-all shadow-[0_0_30px_rgba(255,255,255,0.1)]`}>
-                          View Live <ExternalLink className="w-5 h-5" />
-                        </Link>
-                      )}
-                      
-                      {project.github && (
-                        <Link href={project.github} target="_blank" className="h-14 w-full sm:w-auto px-8 rounded-full border border-white/20 bg-white/5 backdrop-blur-md text-white font-bold flex items-center justify-center gap-2 hover:bg-white/10 transition-all">
-                          GitHub Repo <Github className="w-5 h-5" />
-                        </Link>
-                      )}
                     </div>
                   </div>
 

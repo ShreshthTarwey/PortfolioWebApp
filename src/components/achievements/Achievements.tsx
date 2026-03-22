@@ -30,6 +30,7 @@ export default function Achievements() {
            initial={{ opacity: 0, x: -50 }}
            whileInView={{ opacity: 1, x: 0 }}
            viewport={{ once: true }}
+           transition={{ duration: 0.8, ease: "easeOut" }}
            className="flex items-center gap-4 mb-4"
          >
            <div className="w-12 h-[2px] bg-gradient-to-r from-yellow-500 to-transparent"></div>
@@ -39,6 +40,7 @@ export default function Achievements() {
            initial={{ opacity: 0, y: 20 }}
            whileInView={{ opacity: 1, y: 0 }}
            viewport={{ once: true }}
+           transition={{ duration: 0.8, delay: 0.2, ease: "easeOut" }}
            className="text-4xl md:text-5xl font-black text-white tracking-tighter"
          >
            Forged in Competition.
@@ -52,7 +54,7 @@ export default function Achievements() {
             <motion.div 
                initial={{ opacity: 0, scale: 0.9, rotateY: 10 }}
                whileInView={{ opacity: 1, scale: 1, rotateY: 0 }}
-               transition={{ duration: 0.8, type: "spring" }}
+               transition={{ duration: 1.2, type: "spring", bounce: 0.4 }}
                viewport={{ once: true, amount: 0.2 }}
                className="lg:col-span-7 relative p-[1px] md:p-[2px] rounded-[3rem] overflow-hidden group shadow-[0_0_100px_rgba(234,179,8,0.1)] perspective-1000"
             >
@@ -106,7 +108,7 @@ export default function Achievements() {
                  initial={{ opacity: 0, x: 50 }}
                  whileInView={{ opacity: 1, x: 0 }}
                  viewport={{ once: true }}
-                 transition={{ duration: 0.6, delay: 0.2 }}
+                 transition={{ duration: 1.0, delay: 0.2, ease: "easeOut" }}
                  className="relative p-[1px] rounded-3xl overflow-hidden group h-full"
                >
                  <div className={`absolute -inset-[200%] bg-[conic-gradient(from_0deg,transparent_0_70%,rgba(168,162,158,0.8)_100%)] animate-[spin_2s_linear_infinite] opacity-0 group-hover:opacity-100 transition-opacity duration-500`} />
@@ -136,7 +138,7 @@ export default function Achievements() {
                  initial={{ opacity: 0, x: 50 }}
                  whileInView={{ opacity: 1, x: 0 }}
                  viewport={{ once: true }}
-                 transition={{ duration: 0.6, delay: 0.4 }}
+                 transition={{ duration: 1.0, delay: 0.4, ease: "easeOut" }}
                  className="relative p-[1px] rounded-3xl overflow-hidden group h-full"
                >
                  <div className={`absolute -inset-[200%] bg-[conic-gradient(from_0deg,transparent_0_70%,rgba(147,51,234,0.8)_100%)] animate-[spin_2.5s_linear_infinite] opacity-0 group-hover:opacity-100 transition-opacity duration-500`} />
@@ -166,7 +168,7 @@ export default function Achievements() {
                  initial={{ opacity: 0, x: 50 }}
                  whileInView={{ opacity: 1, x: 0 }}
                  viewport={{ once: true }}
-                 transition={{ duration: 0.6, delay: 0.6 }}
+                 transition={{ duration: 1.0, delay: 0.6, ease: "easeOut" }}
                  className="relative p-[1px] rounded-3xl overflow-hidden group h-full"
                >
                  <div className={`absolute -inset-[200%] bg-[conic-gradient(from_0deg,transparent_0_70%,rgba(16,185,129,0.8)_100%)] animate-[spin_3s_linear_infinite] opacity-0 group-hover:opacity-100 transition-opacity duration-500`} />

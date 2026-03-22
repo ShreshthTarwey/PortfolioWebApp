@@ -16,6 +16,7 @@ export default function About() {
             initial={{ opacity: 0, x: -50 }}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
+            transition={{ duration: 0.8, ease: "easeOut" }}
             className="flex items-center gap-4 mb-8"
           >
             <div className="w-12 md:w-20 h-[3px] bg-gradient-to-r from-orange-500 to-transparent"></div>
@@ -26,6 +27,7 @@ export default function About() {
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
+            transition={{ duration: 0.8, delay: 0.2, ease: "easeOut" }}
             className="text-3xl md:text-4xl lg:text-[2.5rem] font-black tracking-tight mb-8 leading-[1.2]"
           >
             Scalable <span className="text-transparent bg-clip-text bg-gradient-to-r from-orange-400 to-rose-400 drop-shadow-sm">backend</span> <span className="text-zinc-700 font-light px-1 lg:px-2">|</span> Strong <span className="text-transparent bg-clip-text bg-gradient-to-r from-emerald-400 to-cyan-400 drop-shadow-sm">DSA</span> <span className="text-zinc-700 font-light px-1 lg:px-2">|</span> Gen <span className="text-transparent bg-clip-text bg-gradient-to-r from-purple-400 to-pink-400 drop-shadow-sm">AI</span>.
@@ -35,6 +37,7 @@ export default function About() {
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
+            transition={{ duration: 0.8, delay: 0.4, ease: "easeOut" }}
             className="space-y-6 text-lg text-zinc-400 font-medium leading-relaxed"
           >
             <p>
@@ -52,6 +55,7 @@ export default function About() {
           initial={{ opacity: 0, scale: 0.8 }}
           whileInView={{ opacity: 1, scale: 1 }}
           viewport={{ once: true }}
+          transition={{ duration: 1.2, ease: "easeOut" }}
           className="w-full xl:w-1/2 flex items-center justify-center min-h-[400px] md:min-h-[500px] relative pointer-events-none mt-16 xl:mt-0 overflow-visible"
         >
            {/* Center Glowing Core */}
