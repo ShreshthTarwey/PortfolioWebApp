@@ -18,7 +18,7 @@ const EDUCATION = [
   },
   {
     degree: "Higher Secondary (12th Grade)",
-    institution: "XYZ Senior Secondary School",
+    institution: "D.A.V Public School",
     period: "2020 - 2022",
     score: "73.7%",
     icon: BookOpen,
@@ -30,7 +30,7 @@ const EDUCATION = [
   },
   {
     degree: "Secondary Education (10th Grade)",
-    institution: "XYZ High School",
+    institution: "Grizzly Vidyalaya",
     period: "2019 - 2020",
     score: "87.8 %",
     icon: School,
